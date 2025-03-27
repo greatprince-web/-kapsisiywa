@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h3>Dashboard</h3>
+        <ul>
+            <li><button onclick="showSection('library')">Library</button></li>
+            <li><button onclick="showSection('gallery')">Gallery</button></li>
+            <li><button onclick="showSection('sermons')">Past Sermons</button></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div id="library" class="content-section">
+            <h3>Library</h3>
+            <p>Welcome to the church library.</p>
+        </div>
+
+        <div id="gallery" class="content-section" style="display: none;">
+            <h3>Gallery</h3>
+            <p>Church events and photos.</p>
+        </div>
+
+        <div id="sermons" class="content-section" style="display: none;">
+            <h3>Past Sermons</h3>
+            <p>Access previous sermons here.</p>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Navigation -->
+<script>
+function showSection(sectionId) {
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(sectionId).style.display = 'block';
+}
+</script>
+
+<!-- CSS Styling -->
+<style>
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+.sidebar {
+    width: 250px;
+    background-color: #0057A0;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar ul li {
+    margin: 15px 0;
+}
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: none;
+    color: white;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+}
+.sidebar button:hover {
+    background-color: #003F74;
+}
+.main-content {
+    margin-left: 270px;
+    padding: 20px;
+    flex-grow: 1;
+}
+.content-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+</style>
+{% endblock %}

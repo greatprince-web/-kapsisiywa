@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Sermons</h2>
+    
+    {% for sermon in sermons %}
+        <div class="sermon-item">
+            <h3>{{ sermon.title }}</h3>
+            <p>{{ sermon.description }}</p>
+            <p>Date: {{ sermon.date }}</p>
+
+            {% if sermon.video_url %}
+                <div class="video-container">
+                    <iframe src="{{ sermon.video_url }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+            {% endif %}
+
+            {% if sermon.video_file %}
+                <div class="video-container">
+                    <video controls>
+                        <source src="{{ sermon.video_file.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            {% endif %}
+
+            {% if sermon.sermon_file %}
+                <a href="{{ sermon.sermon_file.url }}" download>Download Sermon</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

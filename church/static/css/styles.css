@@ -1,0 +1,299 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 1100px;
+    width: 90%;
+    margin: auto;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+}
+
+.btn {
+    padding: 8px 16px;
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* General List Styling */
+.ministries-list,
+.events-list,
+.sermons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ministry-item,
+.event-item,
+.sermon-item {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.ministry-item:hover,
+.event-item:hover,
+.sermon-item:hover {
+    transform: translateY(-5px);
+}
+
+.ministry-item h2,
+.event-item h2,
+.sermon-item h2 {
+    font-size: 1.8rem;
+    color: #0057A0;
+}
+
+.ministry-item p,
+.event-item p,
+.sermon-item p {
+    color: #343A40;
+    font-size: 1.1rem;
+}
+
+.sermon-item .btn,
+.event-item .btn {
+    margin-top: 10px;
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.video-container iframe,
+.video-container video {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* RESPONSIVENESS */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .container {
+        width: 95%;
+    }
+
+    .navbar-nav .nav-item {
+        margin-right: 10px;
+    }
+
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .ministry-item h2,
+    .event-item h2,
+    .sermon-item h2 {
+        font-size: 1.5rem;
+    }
+
+    .ministry-item p,
+    .event-item p,
+    .sermon-item p {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+
+    .ministries-list,
+    .events-list,
+    .sermons-list {
+        flex-direction: column;
+    }
+
+    .ministry-item,
+    .event-item,
+    .sermon-item {
+        padding: 15px;
+    }
+
+    .ministry-item h2,
+    .event-item h2,
+    .sermon-item h2 {
+        font-size: 1.3rem;
+    }
+
+    .ministry-item p,
+    .event-item p,
+    .sermon-item p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}
+
+/* Small Mobile Phones */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .ministry-item h2,
+    .event-item h2,
+    .sermon-item h2 {
+        font-size: 1.2rem;
+    }
+
+    .ministry-item p,
+    .event-item p,
+    .sermon-item p {
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+    }
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    aspect-ratio: 16 / 9; /* Keeps the correct aspect ratio */
+    margin: 0 auto; /* Centers the video */
+}
+
+.video-container iframe,
+.video-container video {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    padding-top: 20px;
+    transition: all 0.3s;
+}
+.sidebar button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: none;
+    color: white;
+    text-align: left;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.sidebar button:hover {
+    background: #495057;
+}
+.content {
+    margin-left: 260px;
+    padding: 20px;
+    flex-grow: 1;
+}
+.content-section {
+    display: none;
+}
+.content-section.active {
+    display: block;
+}
+/* Donation Page Styles */
+.donation-section {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .donation-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .btn-donate {
+    background: #2ecc71;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s;
+  }
+  
+  .btn-donate:hover {
+    background: #27ae60;
+  }
+  /* Give Page Specific Styles */
+.btn-donate {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-donate:hover {
+    background-color: #e6c200;
+    transform: translateY(-2px);
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}

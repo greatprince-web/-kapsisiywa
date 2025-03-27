@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Give - Deliverance Church{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+            <h1 class="mb-4">Support Our Ministry</h1>
+            <p class="lead">Your generous gifts help us spread the Gospel.</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Online Giving -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title text-primary">Online Giving</h3>
+                    <a href="https://paypal.com/yourchurch" 
+                       class="btn btn-primary btn-lg mt-3">
+                       Give via PayPal
+                    </a>
+                    <p class="mt-3">Secure and tax-deductible</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Methods -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title text-primary">Other Ways to Give</h3>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2">
+                            <strong>Bank Transfer:</strong><br>
+                            Deliverance Church<br>
+                            Account #: XXXX-XXXX-XXXX
+                        </li>
+                        <li class="mb-2">
+                            <strong>In-Person:</strong><br>
+                            Sunday services collection
+                        </li>
+                        <li>
+                            <strong>Mobile Money:</strong><br>
+                            +254 700 XXX XXX
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

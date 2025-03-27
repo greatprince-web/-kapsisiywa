@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}   
+
+
+{% block content %}
+<div class="text-center">
+    <h1>Welcome to Our Church</h1>
+    <p>Join us for worship, teachings, and fellowship.</p>
+    <section id="sermons">
+        <div class="container">
+            <h2>Recent Sermons</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/sermon1.jpeg' %}" class="card-img-top" alt="Sermon 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Sermon Title</h5>
+                            <p class="card-text">A brief description of the sermon...</p>
+                            <a href="#" class="btn btn-primary">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat for other sermons -->
+            </div>
+        </div>
+    </section>
+    
+</div>
+{% endblock %}
+```
