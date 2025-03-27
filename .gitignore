@@ -1,0 +1,12 @@
+
+__pycache__/
+*.sqlite3
+.env
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Django
+db.sqlite3
+*.log
