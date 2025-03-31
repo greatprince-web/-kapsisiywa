@@ -1,30 +1,73 @@
 {% extends 'base.html' %}
-{% load static %}   
-
+{% load static %}
 
 {% block content %}
-<div class="text-center">
-    <h1>Welcome to Our Church</h1>
-    <p>Join us for worship, teachings, and fellowship.</p>
-    <section id="sermons">
-        <div class="container">
-            <h2>Recent Sermons</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'images/sermon1.jpeg' %}" class="card-img-top" alt="Sermon 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Sermon Title</h5>
-                            <p class="card-text">A brief description of the sermon...</p>
-                            <a href="#" class="btn btn-primary">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Repeat for other sermons -->
-            </div>
-        </div>
-    </section>
-    
-</div>
+
+<!-- Hero Section -->
+<section id="hero-section">
+    <img id="hero-image" src="{% static 'images/images.jpeg' %}" alt="Hero Image" style="display: none;">
+    <div class="hero-overlay">
+        <h2 id="typing-text"></h2>
+    </div>
+    <button id="next-btn">❯</button>
+</section>
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+    let heroData = [];
+    let currentIndex = 0;
+    let typedInstance;
+
+    async function fetchHeroData() {
+        try {
+            const response = await fetch('/api/welcome/');
+            const data = await response.json();
+            heroData = data.welcome_data;
+            updateHeroContent();
+        } catch (error) {
+            console.error("Error fetching hero data:", error);
+        }
+    }
+
+    function updateHeroContent() {
+        if (heroData.length === 0) return;
+
+        let content = heroData[currentIndex];
+        let imageElement = document.getElementById('hero-image');
+        let textElement = document.getElementById('typing-text');
+
+        // Ensure the image is displayed properly
+        imageElement.style.display = "block";
+        imageElement.src = content.image;
+
+        // Stop previous text animation
+        if (typedInstance) {
+            typedInstance.destroy();
+        }
+
+        // Create new typing effect
+        typedInstance = new Typed("#typing-text", {
+            strings: [content.verse],
+            typeSpeed: 50,
+            backSpeed: 25,
+            showCursor: false,
+            onComplete: function () {
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % heroData.length;
+                    updateHeroContent();
+                }, 4000); // Wait 4 seconds before switching
+            }
+        });
+    }
+
+    // Manual next button
+    document.getElementById("next-btn").addEventListener("click", function () {
+        currentIndex = (currentIndex + 1) % heroData.length;
+        updateHeroContent();
+    });
+
+    fetchHeroData();
+</script>
+
 {% endblock %}
-```

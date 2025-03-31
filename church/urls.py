@@ -1,20 +1,14 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path, include
-from church import views  # Import views from church
+from church import views  
 from rest_framework.routers import DefaultRouter
-from church import views
 
 router = DefaultRouter()
 router.register(r'events', views.EventViewSet)
 
-urlpatterns = []  # Initialize urlpatterns as an empty list
-urlpatterns += router.urls
-from .views import EventViewSet
-
-router = DefaultRouter()
-router.register(r'events', EventViewSet)
-
-urlpatterns = []  # Initialize urlpatterns as an empty list
-urlpatterns += [
+urlpatterns = [
+    path('api/welcome/', views.welcome_data, name='welcome-data'),
     path('api/', include(router.urls)),
     path('', views.home, name='home'),
     path('register/', views.register, name='register'),
@@ -23,9 +17,12 @@ urlpatterns += [
     path('member_dashboard/', views.member_dashboard, name='member_dashboard'),
     path('sermons/', views.sermons, name='sermons'),
     path('ministries/', views.ministries, name='ministries'),
-    path('events/', views.events, name='events'),  # Correctly using views.events here
     path('events/', views.events, name='events'),
     path('events/create/', views.event_create, name='event_create'),
     path('events/<int:pk>/edit/', views.event_update, name='event_update'),
     path('give/', views.give_view, name='give'),
 ]
+
+# Only in development: Serve media files
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

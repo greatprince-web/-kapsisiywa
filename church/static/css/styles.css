@@ -1,9 +1,11 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+body{
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevents horizontal shaking */
+    width: 100%;
+    height: 100%;
 }
+
 
 /* Container */
 .container {
@@ -296,4 +298,168 @@ footer {
 
 .card:hover {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+/* Hero Section */
+#hero-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Background Image */
+#hero-image {
+    width: 100%;
+    min-height: 100vh;    
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Overlay to Improve Readability */
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    color: white;
+    text-align: center;
+    width: 80%;
+}
+
+.hero-overlay h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Navigation Buttons */
+#prev-btn, #next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#prev-btn { left: 20px; }
+#next-btn { right: 20px; }
+
+#prev-btn:hover, #next-btn:hover {
+    background: white;
+}
+
+/* Make text responsive on smaller screens */
+@media (max-width: 768px) {
+    .hero-overlay {
+        width: 90%;
+        padding: 15px;
+    }
+    .hero-overlay h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Overlay to make text readable */
+#overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Slight dark overlay */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    width: 80%; /* Responsive width */
+    max-width: 600px;
+}
+
+/* Typography */
+
+
+/* ✅ Mobile Responsiveness */
+@media (max-width: 768px) {
+    #overlay {
+        width: 90%;
+        padding: 15px;
+    }
+    #typed-verse {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    #typed-verse {
+        font-size: 16px;
+    }
+}
+#hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Slider Styles */
+.slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Text Overlay */
+.overlay {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Navigation Buttons */
+#prev-btn, #next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+}
+
+#prev-btn { left: 20px; }
+#next-btn { right: 20px; }
+
+#prev-btn:hover, #next-btn:hover {
+    background: white;
 }

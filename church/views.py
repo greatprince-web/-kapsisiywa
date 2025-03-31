@@ -15,6 +15,21 @@ from .models import Event
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+from django.http import JsonResponse
+from django.conf import settings
+from .models import WelcomeContent
+
+def welcome_data(request):
+    content = WelcomeContent.objects.all().order_by('-created_at')[:5]  # Get latest 5
+    data = [
+        {
+            'image': request.build_absolute_uri(content.image.url) if content.image else None,
+            'verse': content.verse
+        }
+        for content in content
+    ]
+    return JsonResponse({'welcome_data': data})
+
 
 
 
